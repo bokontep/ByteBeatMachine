@@ -19,6 +19,10 @@ t is the current time. X and Y are 8 bit unsigned ints coming from the X and Y i
 This works at a glorious 8000 samples per second so there you have it, a bytebeat oscillator in javascript!
 You can also use the trigger led button over the trigger input to test the oscillator.
 A few things to try.
+There is also a switch labelled float/byte. When on float mode we have floatbeat. Otherwise it is the usual bytebeat oscillator.
+On floatbeat you can test the following code:
+Math.sin(2.0*3.14159*100.0*Math.pow(2.0,X)*t*0.0040)*5.0
+That produces a "sine" with it's pitch controlled by the X parameter.
 
 The simplest thing to try is just putting t as the expression. This produces a kind of stepped saw.
 Or you can try my personal favorite (([1.122,1.259,1.498,1.681,1.887][((t >> 12) ^ ((t >> 10)+ 3561)) %5]) * t & 128 | (([1.122,1.259,1.498,1.681,1.887][((t >> 11) ^ ((t >> 9) +2137)) %5]) * t) & ((t>>14)%120+8) | (t>>4) )
